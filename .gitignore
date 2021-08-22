@@ -25,6 +25,8 @@
 # ignore a single file
 mycode.class
 
+*.vsconfig
+
 # ignore an entire directory
 /mydebugdir/
 
