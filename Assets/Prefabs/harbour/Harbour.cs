@@ -16,18 +16,21 @@ public class Harbour : MonoBehaviour
     private int ID; // TODO  remove, use equals
 
     [SerializeField]
-    GameManager gm;
+    private GameManager gm;
 
     [SerializeField]
-    HarbourManager hm;
+    private HarbourManager hm;
 
     [SerializeField]
-    GameObject spawnCenter;
+    private GameObject spawnCenter;
+
+    [SerializeField]
+    private bool onlyDelivery = false;
 
     // Update is called once per frame
     void Update()
     {
-      if (gm.Playing()) {
+      if (gm.Playing() && !onlyDelivery) {
         if (passengers.Count < maxPassengers){
           if (timeRemaining <= 0) {
             SpawnPassenger();
