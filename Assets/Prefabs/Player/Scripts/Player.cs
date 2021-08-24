@@ -87,7 +87,7 @@ public class Player : MonoBehaviour
           if (i < loadedPassengers.Count) {
             Debug.Log(i);
             GameObject prefab = loadedPassengers[i];
-            Vector3 pos = new Vector3(s.position.x, s.position.y+0.15f, s.position.z);
+            Vector3 pos = new Vector3(s.position.x, s.position.y+0.35f, s.position.z);
             GameObject passenger = Instantiate(prefab, pos, Quaternion.identity);
             passenger.transform.SetParent(this.transform);
             spawnedPassengers.Add(passenger);
@@ -118,6 +118,7 @@ public class Player : MonoBehaviour
     public void Reset(){
         state = PlayerState.Idle;
         score = 0;
+        lastHarbourID = 0;
         loadedPassengers = new List<GameObject>();
         foreach (GameObject p in spawnedPassengers) {
           Destroy(p);
