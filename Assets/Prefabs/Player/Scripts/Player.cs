@@ -118,7 +118,7 @@ public class Player : MonoBehaviour
     public void Reset(){
         state = PlayerState.Idle;
         score = 0;
-        lastHarbourID = 0;
+        lastHarbourID = 2;
         loadedPassengers = new List<GameObject>();
         foreach (GameObject p in spawnedPassengers) {
           Destroy(p);
