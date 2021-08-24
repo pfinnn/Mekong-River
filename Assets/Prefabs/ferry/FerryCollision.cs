@@ -8,8 +8,7 @@ public class FerryCollision : MonoBehaviour
     if(other.gameObject.CompareTag("Player")){
       this.gameObject.GetComponent<Ferry>().SetActiveState(false);
     } else if (other.gameObject.CompareTag("Obstacle")) {
-      Debug.Log("despawned");
-
+      Debug.Log("Despawned?");
       Destroy(gameObject);
     }
   }

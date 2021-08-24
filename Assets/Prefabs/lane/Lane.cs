@@ -6,14 +6,20 @@ public class Lane : MonoBehaviour
 {
     [SerializeField]
     private Transform spawn;
+
     [SerializeField]
-    private Collider despawn;
+    private GameObject editorCube;
 
     private float spawnIntervalSeconds = 4;
 
     private float ferryTravelSpeed = 2f;
 
     private float randomizerVal = 0.25f;
+
+    [SerializeField]
+    private Transform target;
+
+    private Vector3 targetDirection;
 
     // timer
     private float timeRemaining;
@@ -36,6 +42,8 @@ public class Lane : MonoBehaviour
          ferryTravelSpeed = dm.GetDefaultFerrySpeed();
          randomizerVal = dm.GetRandomizerVal();
          timeRemaining = spawnIntervalSeconds;
+         targetDirection = target.position - spawn.position;
+         Destroy(editorCube);
     }
 
     // Update is called once per frame
@@ -52,27 +60,28 @@ public class Lane : MonoBehaviour
           timeRemaining -= Time.deltaTime;
         }
       }
-
     }
+
 
     private void SpawnFerry(){
 
       //int randFerryIndex = Mathf.FloorToInt(Random.Range( 0 ,1.99f)); // TODO dangerous, possibly out of range
       Debug.Log(lm.GetRandomFerryPrefab());
-      Vector3 dir = (despawn.transform.position-spawn.position).normalized;
-
-      Ferry ferry = Instantiate(lm.GetRandomFerryPrefab(), spawn.position, Quaternion.LookRotation(despawn.transform.position-spawn.position)).GetComponent<Ferry>();
-      ferry.gameObject.transform.Rotate(0,90,0);
+      //Vector3 lookDirection = (despawn.transform.position - spawn.position).normalized;
+      Vector3 lookDirection = new Vector3(targetDirection.x, 0, targetDirection.z);
+      Ferry ferry = Instantiate(lm.GetRandomFerryPrefab(), spawn.position, Quaternion.LookRotation(lookDirection)).GetComponent<Ferry>();
+      ferry.gameObject.transform.Rotate(0,270,0);
       ferry.gameObject.transform.SetParent(this.transform);
       // Speed with randomness
-      float speedRandomness = Random.Range(-randomizerVal+1.5f, randomizerVal+1.5f);
+      float speedRandomness = Random.Range(-(randomizerVal-1.5f), randomizerVal+2.5f);
       ferry.SetTravelSpeed(ferryTravelSpeed+speedRandomness);
 
       // Direction of destroying trigger, with randomness
-      float destinationRandomness = Random.Range(-0.01f, 0.01f);
-      Vector3 dirRa = new Vector3(dir.x+destinationRandomness,dir.y, dir.z);
-      ferry.SetDestination(dirRa);
-      Debug.Log("Destination : "+destinationRandomness);
+      Vector3 dir = (targetDirection).normalized;
+      //float destinationRandomness = Random.Range(-0.01f, 0.01f);
+      //Vector3 dirRa = new Vector3(dir.x+destinationRandomness,dir.y, dir.z);
+      ferry.SetDestination(dir);
+      //Debug.Log("Destination : "+destinationRandomness);
       ferries.Add(ferry.gameObject);
       Debug.Log("spawned");
     }
@@ -82,9 +91,9 @@ public class Lane : MonoBehaviour
       ferryTravelSpeed = dm.GetDefaultFerrySpeed();
       randomizerVal = dm.GetRandomizerVal();
       foreach (GameObject ferry in ferries) {
-        //ferries.Remove(ferry);
         Destroy(ferry);
       }
+        ferries = new List<GameObject>();
     }
 
     public void OnDifficultyChange() {

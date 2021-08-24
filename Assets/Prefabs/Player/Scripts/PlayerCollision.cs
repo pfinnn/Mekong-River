@@ -15,7 +15,7 @@ public class PlayerCollision : MonoBehaviour
 
 
     private void OnTriggerEnter(Collider other) {
-      if(other.gameObject.CompareTag("Obstacle")){
+      if(other.gameObject.CompareTag("Ferry")){
         Debug.Log("Obstacle hit");
         gm.TriggerGameOver();
       } else if (other.gameObject.CompareTag("Harbour")) {
