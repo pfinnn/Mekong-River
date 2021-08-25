@@ -56,11 +56,11 @@ public class CloudsSpawner : MonoBehaviour
     private void SpawnCloud()
     {
         Vector3 lookDirection = new Vector3(targetDirection.x, 0, targetDirection.z);
-        Vector3 randomSpawnPos = new Vector3(spawn.position.x + Random.Range(-6, 6), spawn.position.y, spawn.position.z + Random.Range(-5, 5));
+        Vector3 randomSpawnPos = new Vector3(spawn.position.x + Random.Range(-1, 1), spawn.position.y, spawn.position.z + Random.Range(-5, 5));
         Cloud cloud = Instantiate(GetRandomCloudPrefab(), randomSpawnPos, Quaternion.LookRotation(lookDirection)).GetComponent<Cloud>();
         cloud.gameObject.transform.SetParent(this.transform);
         // Speed with randomness
-        float speedRandomness = Random.Range(-(randomizerVal - 2.5f), randomizerVal + 1.5f);
+        float speedRandomness = Random.Range(-(randomizerVal), randomizerVal);
         cloud.SetTravelSpeed(speed + speedRandomness);
 
         // Direction of destroying trigger, with randomness
