@@ -57,6 +57,10 @@ public class Harbour : MonoBehaviour
           Destroy(p);
       }
       passengers = new List<GameObject>();
+        if (ID != 2)
+        {
+            SpawnPassenger();
+        }
     }
 
    private void SpawnPassenger(){
