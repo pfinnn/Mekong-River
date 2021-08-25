@@ -51,18 +51,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c01700fd266d6914ababb731e09af2eb, type: 3}
   m_Name: DepthOfField
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   m_AdvancedMode: 0
   mode:
     m_OverrideState: 1
     m_Value: 1
   gaussianStart:
     m_OverrideState: 1
-    m_Value: 23.5
+    m_Value: 23.99
     min: 0
   gaussianEnd:
     m_OverrideState: 1
-    m_Value: 33.1
+    m_Value: 28.5
     min: 0
   gaussianMaxRadius:
     m_OverrideState: 0
@@ -195,7 +195,7 @@ MonoBehaviour:
     min: 0
   intensity:
     m_OverrideState: 1
-    m_Value: 0.84
+    m_Value: 0.76
     min: 0
   scatter:
     m_OverrideState: 1
@@ -225,7 +225,7 @@ MonoBehaviour:
     m_Value: {fileID: 2800000, guid: 87a691417694f644f82186bd22cdf715, type: 3}
   dirtIntensity:
     m_OverrideState: 1
-    m_Value: 2.26
+    m_Value: 3.79
     min: 0
 --- !u!114 &-3451416097869472451
 MonoBehaviour:

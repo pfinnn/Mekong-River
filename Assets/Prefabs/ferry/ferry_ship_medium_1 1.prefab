@@ -175,6 +175,7 @@ GameObject:
   - component: {fileID: -5552345879548016742}
   - component: {fileID: 481861282759477468}
   - component: {fileID: 1477094616941652363}
+  - component: {fileID: 5737164371564704320}
   m_Layer: 0
   m_Name: ferry_ship_medium_1 1
   m_TagString: Ferry
@@ -200,6 +201,7 @@ Transform:
   - {fileID: 2905534573935695387}
   - {fileID: 6925859841006925081}
   - {fileID: 6159143342066323556}
+  - {fileID: 6268088183306450002}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
@@ -256,6 +258,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &5737164371564704320
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 944138619505268049}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aad76f3bf98d32d408b9641fe8ef2c9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  effectPrefab: {fileID: 1722726733478836, guid: 80644b91414427948b98a4d7c6c17683, type: 3}
+  spawn: {fileID: 6268088183306450002}
+  spawnInterval: 0.15
 --- !u!1 &1386371169690122661
 GameObject:
   m_ObjectHideFlags: 0
@@ -337,6 +354,36 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &1506191864235251520
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6268088183306450002}
+  m_Layer: 0
+  m_Name: ParticleSpawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6268088183306450002
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1506191864235251520}
+  m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: -13.7, y: -0.44, z: 6.3}
+  m_LocalScale: {x: 6.590891, y: 8.976138, z: 8.976136}
+  m_Children: []
+  m_Father: {fileID: 455305286344151019}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2278512738328605878
 GameObject:
   m_ObjectHideFlags: 0

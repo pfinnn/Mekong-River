@@ -12,10 +12,13 @@ public class Ferry : MonoBehaviour
   private GameManager gm;
   private Vector3 destination;
 
+  private WaterTrailEffect waterTrailEffect;
+
   // Start is called before the first frame update
   void Start()
   {
       gm = GameObject.Find("GameManager").GetComponent<GameManager>();
+      waterTrailEffect = this.GetComponent<WaterTrailEffect>(); // TODO Require Component
       rb = GetComponent<Rigidbody>();
   }
 
@@ -28,6 +31,15 @@ public class Ferry : MonoBehaviour
       //multiplied by deltaTime and speed for a smooth MovePosition
 
       rb.MovePosition(transform.position + destination * Time.deltaTime * m_Speed);
+    }
+
+    if (!rb.velocity.Equals(Vector3.zero) && !waterTrailEffect.IsActive())
+    {
+        waterTrailEffect.ToggleActive();
+    }
+    else if (rb.velocity.Equals(Vector3.zero) && waterTrailEffect.IsActive())
+    {
+        waterTrailEffect.ToggleActive();
     }
 
   }

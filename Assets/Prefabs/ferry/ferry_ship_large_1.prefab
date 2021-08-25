@@ -956,6 +956,7 @@ GameObject:
   - component: {fileID: 645761266074928241}
   - component: {fileID: -3501111445434770224}
   - component: {fileID: -2520546072661992124}
+  - component: {fileID: 4121134892906181228}
   m_Layer: 0
   m_Name: ferry_ship_large_1
   m_TagString: Ferry
@@ -979,6 +980,7 @@ Transform:
   - {fileID: 7230388456007504919}
   - {fileID: 8232422935809473242}
   - {fileID: 6120155869688481449}
+  - {fileID: 6747277175822992538}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
@@ -1035,6 +1037,21 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 16.760925, y: 3.5357192, z: 1.848854}
   m_Center: {x: -16.407433, y: 1.2678589, z: 1.2278706}
+--- !u!114 &4121134892906181228
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4080724291732318991}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aad76f3bf98d32d408b9641fe8ef2c9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  effectPrefab: {fileID: 1722726733478836, guid: 80644b91414427948b98a4d7c6c17683, type: 3}
+  spawn: {fileID: 6747277175822992538}
+  spawnInterval: 0.15
 --- !u!1 &4431190372924295620
 GameObject:
   m_ObjectHideFlags: 0
@@ -2049,6 +2066,36 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &8798456427636418038
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6747277175822992538}
+  m_Layer: 0
+  m_Name: ParticleSpawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6747277175822992538
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8798456427636418038}
+  m_LocalRotation: {x: -0, y: -1, z: -0, w: 0}
+  m_LocalPosition: {x: -13.2, y: -1.2, z: 1.61}
+  m_LocalScale: {x: 7.6853266, y: 7.588568, z: 4.392361}
+  m_Children: []
+  m_Father: {fileID: 3740931856199283125}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8955117495551228487
 GameObject:
   m_ObjectHideFlags: 0

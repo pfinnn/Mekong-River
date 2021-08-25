@@ -15,6 +15,9 @@ public class Player : MonoBehaviour
     private UI_PlayController playController;
 
     [SerializeField]
+    private WaterTrailEffect waterTrailEffect;
+
+    [SerializeField]
     private Vector3 spawnPosition;
 
     public enum PlayerState {Idle, MovingLeft, MovingRight, Harboured}
@@ -43,12 +46,18 @@ public class Player : MonoBehaviour
     void Update()
     {
       //Debug.Log(state);
+      if (playerMovement.IsMoving() && !waterTrailEffect.IsActive())
+        {
+            waterTrailEffect.ToggleActive();
+        }
+      else if (!playerMovement.IsMoving() && waterTrailEffect.IsActive())
+        {
+            waterTrailEffect.ToggleActive();
+        }
     }
 
     private void HandleDelivery(Harbour harbour){
-      // TODO show press button hint, dont do loading passenngers on enter
-      // if allowed to unload, do that and load new passengers
-      Debug.Log("Unloaded  Passengers");
+
       passengerCount = loadedPassengers.Count;
       score += passengerCount;
       gm.UpdateScore(score);
@@ -58,7 +67,7 @@ public class Player : MonoBehaviour
       }
       loadedPassengers = harbour.loadPassengers();
       SpawnPassengersInRandomSeats();
-      playController.OnScoreChanged(score);
+      playController.OnScoreChanged(score); 
       playController.OnPassengerChanged(loadedPassengers.Count);
     }
 
@@ -75,10 +84,12 @@ public class Player : MonoBehaviour
 
     public void ExitedHarbour(){
       if (lastHarbourID == 1) {
-        state = PlayerState.MovingRight;
+            state = PlayerState.MovingRight;
+            //this.transform.Rotate(new Vector3(0, 180, 0));
       } else if (lastHarbourID == 2){
-        state = PlayerState.MovingLeft;
-      } else { return;}
+            state = PlayerState.MovingLeft;
+            //this.transform.Rotate(new Vector3(0, 180, 0));
+        } else { return;}
     }
 
     private void SpawnPassengersInRandomSeats(){
@@ -134,6 +145,14 @@ public class Player : MonoBehaviour
     public void Activate(){
       this.gameObject.SetActive(true);
       playerMovement.SetActiveState(true);
+    }
+
+    public bool IsMoving()
+    {
+        return ((state.Equals(PlayerState.MovingLeft) 
+            || state.Equals(PlayerState.MovingRight) 
+            || state.Equals(PlayerState.Idle))
+            && (Input.GetAxis("Horizontal") != 0));
     }
 
 }

@@ -657,6 +657,36 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &3765457500957257689
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2611834933651444626}
+  m_Layer: 0
+  m_Name: ParticleSpawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2611834933651444626
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3765457500957257689}
+  m_LocalRotation: {x: -0, y: -1, z: -0, w: 0}
+  m_LocalPosition: {x: -12.17, y: -0.06, z: 1.3}
+  m_LocalScale: {x: 10.371485, y: 10.240907, z: 5.927569}
+  m_Children: []
+  m_Father: {fileID: 3740931856199283125}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4080724291732318991
 GameObject:
   m_ObjectHideFlags: 0
@@ -670,6 +700,7 @@ GameObject:
   - component: {fileID: 645761266074928241}
   - component: {fileID: 644660769896626198}
   - component: {fileID: -3501111445434770224}
+  - component: {fileID: 7952168571120156125}
   m_Layer: 0
   m_Name: ferry_ship_large_2
   m_TagString: Ferry
@@ -693,6 +724,7 @@ Transform:
   - {fileID: 7230388456007504919}
   - {fileID: 1297914997582093174}
   - {fileID: 6024414770021178404}
+  - {fileID: 2611834933651444626}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
@@ -749,6 +781,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &7952168571120156125
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4080724291732318991}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aad76f3bf98d32d408b9641fe8ef2c9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  effectPrefab: {fileID: 1722726733478836, guid: 80644b91414427948b98a4d7c6c17683, type: 3}
+  spawn: {fileID: 2611834933651444626}
+  spawnInterval: 0.2
 --- !u!1 &4395964165910909840
 GameObject:
   m_ObjectHideFlags: 0

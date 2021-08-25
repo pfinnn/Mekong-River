@@ -175,8 +175,9 @@ GameObject:
   - component: {fileID: 6333005081966392735}
   - component: {fileID: 2037016764160407740}
   - component: {fileID: -8382440400850989373}
+  - component: {fileID: 7032346006925844101}
   m_Layer: 0
-  m_Name: ferry_ship_medium_1
+  m_Name: ferry_ship_medium_1 3
   m_TagString: Ferry
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -207,6 +208,7 @@ Transform:
   - {fileID: 1837539975788281641}
   - {fileID: 1256621331925069450}
   - {fileID: 6489198112845350309}
+  - {fileID: 6756870058623141499}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -263,6 +265,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df43ab10027dfb242878ff176a7bdfd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7032346006925844101
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 944138619505268049}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aad76f3bf98d32d408b9641fe8ef2c9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  effectPrefab: {fileID: 1722726733478836, guid: 80644b91414427948b98a4d7c6c17683, type: 3}
+  spawn: {fileID: 6756870058623141499}
+  spawnInterval: 0.15
 --- !u!1 &1233276692764057030
 GameObject:
   m_ObjectHideFlags: 0
@@ -2161,6 +2178,36 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &9058353033707665604
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6756870058623141499}
+  m_Layer: 0
+  m_Name: ParticleSpawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6756870058623141499
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9058353033707665604}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -13, y: -0.6, z: 6.251217}
+  m_LocalScale: {x: 8.263306, y: 8.263306, z: 6.0674834}
+  m_Children: []
+  m_Father: {fileID: 455305286344151019}
+  m_RootOrder: 14
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1466190873339809214
 PrefabInstance:
   m_ObjectHideFlags: 0
