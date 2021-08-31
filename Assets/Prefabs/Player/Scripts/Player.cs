@@ -20,6 +20,9 @@ public class Player : MonoBehaviour
     [SerializeField]
     private Vector3 spawnPosition;
 
+    [SerializeField]
+    private AudioListener audioListener;
+
     public enum PlayerState {Idle, MovingLeft, MovingRight, Harboured}
 
     private PlayerState state;
@@ -96,7 +99,6 @@ public class Player : MonoBehaviour
         int i = 0;
         foreach (Transform s in seats) {
           if (i < loadedPassengers.Count) {
-            Debug.Log(i);
             GameObject prefab = loadedPassengers[i];
             Vector3 pos = new Vector3(s.position.x, s.position.y+0.35f, s.position.z);
             GameObject passenger = Instantiate(prefab, pos, Quaternion.identity);
@@ -127,6 +129,7 @@ public class Player : MonoBehaviour
     }
 
     public void Reset(){
+        audioListener.enabled = true;
         state = PlayerState.Idle;
         score = 0;
         lastHarbourID = 2;
@@ -138,6 +141,7 @@ public class Player : MonoBehaviour
     }
 
     public void Deactivate(){
+      audioListener.enabled = false;
       this.gameObject.SetActive(false);
       playerMovement.SetActiveState(false);
     }

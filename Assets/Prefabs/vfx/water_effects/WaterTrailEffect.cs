@@ -53,11 +53,12 @@ public class WaterTrailEffect : MonoBehaviour
     {
         for (int i = 0; i < timestamps.Count; i++)
         {
-            Debug.Log("Comparing :" + Time.deltaTime +" and ts: "+timestamps[i]);
+            //Debug.Log("Comparing :" + Time.deltaTime +" and ts: "+timestamps[i]);
             if (Time.deltaTime - timestamps[i] >= 2)
             {
-                Debug.Log("Removing old particle system");
+                // Debug.Log("Removing old particle system");
                 timestamps.RemoveAt(i);
+                timestamps.TrimExcess(); // TODO Remove maybe trims list?
                 Destroy(particleSystems[i]);
             }
         }
@@ -69,10 +70,9 @@ public class WaterTrailEffect : MonoBehaviour
             spawn.position.x + Random.Range(-.2f, .2f), 
             spawn.position.y ,
             spawn.position.z + Random.Range(-.2f, .2f));
-
         particleSystems.Add(Instantiate(effectPrefab, randSpawnPosition, Quaternion.identity));
         timestamps.Add(Time.deltaTime);
-        Debug.Log("Added particle system at :" + Time.deltaTime);
+        //Debug.Log("Added particle system at :" + Time.deltaTime);
     } 
 
     public void ToggleActive()

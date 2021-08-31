@@ -49,7 +49,6 @@ public class Lane : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-      //Debug.Log("Randomness: "+randomizerVal);
       if (gm.Playing()){
         if (timeRemaining <= 0) {
           SpawnFerry();
@@ -65,9 +64,6 @@ public class Lane : MonoBehaviour
 
     private void SpawnFerry(){
 
-      //int randFerryIndex = Mathf.FloorToInt(Random.Range( 0 ,1.99f)); // TODO dangerous, possibly out of range
-      Debug.Log(lm.GetRandomFerryPrefab());
-      //Vector3 lookDirection = (despawn.transform.position - spawn.position).normalized;
       Vector3 lookDirection = new Vector3(targetDirection.x, 0, targetDirection.z);
       Ferry ferry = Instantiate(lm.GetRandomFerryPrefab(), spawn.position, Quaternion.LookRotation(lookDirection)).GetComponent<Ferry>();
       ferry.gameObject.transform.Rotate(0,270,0);
@@ -78,12 +74,8 @@ public class Lane : MonoBehaviour
 
       // Direction of destroying trigger, with randomness
       Vector3 dir = (targetDirection).normalized;
-      //float destinationRandomness = Random.Range(-0.01f, 0.01f);
-      //Vector3 dirRa = new Vector3(dir.x+destinationRandomness,dir.y, dir.z);
       ferry.SetDestination(dir);
-      //Debug.Log("Destination : "+destinationRandomness);
       ferries.Add(ferry.gameObject);
-      Debug.Log("spawned");
     }
 
     public void Reset(){

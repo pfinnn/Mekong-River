@@ -66,8 +66,6 @@ public class CloudsSpawner : MonoBehaviour
         // Direction of destroying trigger, with randomness
         Vector3 dir = (targetDirection).normalized;
         cloud.SetDestination(dir);
-
-        Debug.Log("spawned cloud");
     }
 
     public GameObject GetRandomCloudPrefab()

@@ -21,6 +21,9 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private HarbourManager harbourManager;
 
+    [SerializeField]
+    private AudioListener audioListener;
+
     // ############### UI Controllers ####################
 
     [SerializeField]
@@ -127,9 +130,12 @@ public class GameManager : MonoBehaviour
         startController.Init(highscore);
         // Block PLayer Movement
         player.Deactivate();
+        // activate new AudioListener on Camera
+        audioListener.enabled = true;
       }
 
       private void SetToPlaying(){
+        audioListener.enabled = false;
         laneManager.ResetLanes();
         harbourManager.Reset();
         player.Reset();
@@ -145,9 +151,10 @@ public class GameManager : MonoBehaviour
         difficultyManager.SetTimer(timer);
         difficultyManager.Reset();
         highscoreChanged = false;
-      }
+        audioListener.enabled = true;
+    }
 
-      public void TriggerPlaying(){
+    public void TriggerPlaying(){
         SetGameState(GameState.Playing);
       }
 
