@@ -15,12 +15,22 @@ public class PlayerSounds : MonoBehaviour
     private AudioSource source_engine;
 
     [SerializeField]
-    private AudioSource source_effect;
-    
+    private List<AudioSource> sources_effect_loading = new List<AudioSource>();
+
+    [SerializeField]
+    private List<AudioSource> sources_effect_unloading = new List<AudioSource>();
+
     private float defaultPitch;
 
     private float defaultVolume;
 
+
+    public enum SoundEffects
+    {
+        unloading,
+        loading,
+        crashing,
+    }
 
     void Start()
     {
@@ -51,4 +61,29 @@ public class PlayerSounds : MonoBehaviour
         }
     }
 
+
+    public void PlaySoundEffect(SoundEffects effect)
+    {
+        switch (effect)
+        {
+
+            case SoundEffects.loading:
+                foreach (AudioSource source in sources_effect_loading)
+                {
+                    source.Play();
+                }
+                return;
+
+            case SoundEffects.unloading:
+                foreach (AudioSource source in sources_effect_unloading)
+                {
+                    source.Play();
+                }
+                return;
+
+            default:
+                return;
+        }
+
+    }
 }

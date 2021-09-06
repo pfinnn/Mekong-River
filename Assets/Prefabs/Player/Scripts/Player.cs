@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -22,6 +23,9 @@ public class Player : MonoBehaviour
 
     [SerializeField]
     private AudioListener audioListener;
+
+    [SerializeField]
+    private PlayerSounds playerSounds;
 
     public enum PlayerState {Idle, MovingLeft, MovingRight, Harboured}
 
@@ -60,18 +64,14 @@ public class Player : MonoBehaviour
     }
 
     private void HandleDelivery(Harbour harbour){
-
       passengerCount = loadedPassengers.Count;
       score += passengerCount;
       gm.UpdateScore(score);
-      // unload over Time TODO
       foreach (GameObject p in spawnedPassengers) {
         Destroy(p);
       }
       loadedPassengers = harbour.loadPassengers();
       SpawnPassengersInRandomSeats();
-      playController.OnScoreChanged(score); 
-      playController.OnPassengerChanged(loadedPassengers.Count);
     }
 
     // changing player state to harboured and therefore blocking player input and movement into harbours dir
@@ -82,6 +82,26 @@ public class Player : MonoBehaviour
         if (lastHarbourID != harbour.GetHarbourID()) {
           lastHarbourID = harbour.GetHarbourID();
           HandleDelivery(harbour);
+          PlayDeliverySound();
+          UpdatePlayerController();
+        }
+    }
+
+    private void UpdatePlayerController()
+    {
+        playController.OnScoreChanged(score);
+        playController.OnPassengerChanged(loadedPassengers.Count);
+    }
+
+    private void PlayDeliverySound()
+    {
+        if (passengerCount > 0)
+        {
+            playerSounds.PlaySoundEffect(PlayerSounds.SoundEffects.unloading);
+        }
+        else
+        {
+            playerSounds.PlaySoundEffect(PlayerSounds.SoundEffects.loading);
         }
     }
 
