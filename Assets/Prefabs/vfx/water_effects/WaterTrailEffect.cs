@@ -21,12 +21,6 @@ public class WaterTrailEffect : MonoBehaviour
 
     private bool active;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     // Update is called once per frame
     void Update()
     {
@@ -37,6 +31,7 @@ public class WaterTrailEffect : MonoBehaviour
                 // when effect is active, this method spawns effects and "drops" them behind the ship
                 // in short but and random intervals with varying positions and (size?)
                 SpawnWaterTrail();
+                //RemoveOldParticleSystems();
                 //RemoveOldParticleSystems(); // more performant would be to use object bool and just reactivate particle systemsloop TODO
                 timeRemaining = spawnInterval + Random.Range(-0.05f, 0.05f);
                 if (timeRemaining <= 0) { timeRemaining = 0.1f; }
@@ -51,15 +46,19 @@ public class WaterTrailEffect : MonoBehaviour
 
     private void RemoveOldParticleSystems()
     {
-        for (int i = 0; i < timestamps.Count; i++)
+        foreach (GameObject particleGO in particleSystems)
         {
-            //Debug.Log("Comparing :" + Time.deltaTime +" and ts: "+timestamps[i]);
-            if (Time.deltaTime - timestamps[i] >= 2)
+            ParticleSystem[] components = particleGO.GetComponentsInChildren<ParticleSystem>();
+            foreach (ParticleSystem particleSys in components)
             {
-                // Debug.Log("Removing old particle system");
-                timestamps.RemoveAt(i);
-                timestamps.TrimExcess(); // TODO Remove maybe trims list?
-                Destroy(particleSystems[i]);
+                Debug.Log(particleSys.time);
+                if(particleSys.time > 1.25f) // only this is working, particle system is still alive and playing. why?
+                {
+                    // destroy particle game object when one of the ps are inactive
+                    particleSystems.Remove(particleGO);
+                    ///Destroy(particleGO);
+                    break; // break out of inner loop and go back to all particle Systems
+                }
             }
         }
     }
