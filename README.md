@@ -1,5 +1,7 @@
 # Mekong-River
-made in Unity
+made in Unity for WebGL
+
+Play here: https://finndev478.itch.io/mekong-river-crossing
 
 Goal: Carry over as many passengers as possible to the other side of the river. 
 
@@ -7,8 +9,7 @@ Goal: Carry over as many passengers as possible to the other side of the river.
 + Difficulty (Speed of the game, amount of obstacles) increase over time
 + Passengers load onto the ship as 3D models
 + Moving clouds cast shadows
-+ Custom Water shader
-+ WebGL Support
++ Custom Water shader, Custom particle effects
 + Custom 3D models and textures
 + Custom Soundtrack and Sound effects
 
