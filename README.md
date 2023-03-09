@@ -1,6 +1,5 @@
 # Mekong-River
-Ferry Game made in Unity set in Vietnam
-
+made in Unity
 Goal: Carry over as many passengers as possible to the other side of the river. 
 
 + Timer, Highscore, Point Counter
